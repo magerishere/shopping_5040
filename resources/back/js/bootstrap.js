@@ -1,10 +1,22 @@
 // https://api.jquery.com/
 import $ from 'jquery';
+
 window.$ = window.jQuery = $;
-
+// https://popper.js.org/
 import * as Popper from '@popperjs/core';
-window.Popper = Popper;
 
+window.Popper = Popper;
+// https://www.tiny.cloud/docs/tinymce/6/cloud-quick-start/
+import tinymce from 'tinymce/tinymce'
+
+window.tinymce = tinymce;
+// Default icons are required for TinyMCE 5.3 or above
+import 'tinymce/icons/default';
+// A theme is also required
+import 'tinymce/themes/silver';
+
+// Any plugins you want to use has to be imported
+import 'tinymce/plugins/link';
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
@@ -13,6 +25,7 @@ window.Popper = Popper;
  */
 
 import axios from 'axios';
+
 window.axios = axios;
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Back\AuthController;
 use App\Http\Controllers\Back\DashboardController;
+use App\Http\Controllers\Back\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,9 +16,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [DashboardController::class, 'showDashboard'])->name('dashboard.show')->middleware('auth');
-
 Route::middleware('guest')->group(function () {
     Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login.show');
     Route::post('/login', [AuthController::class, 'login'])->name('login');
 });
+
+Route::get('/', [DashboardController::class, 'showDashboard'])->name('dashboard.show')->middleware('auth');
+Route::resource('products', ProductController::class);
+
+

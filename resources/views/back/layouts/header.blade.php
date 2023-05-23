@@ -13,6 +13,14 @@
                             Home
                         </a>
                     </li>
+                    @auth()
+                        <li>
+                            <a href="{{route('admin.products.index')}}" class="nav-link text-white">
+                                <i class="bi bi-box mx-auto mb-1"></i>
+                                Products
+                            </a>
+                        </li>
+                    @endauth
                 </ul>
             </div>
         </div>
