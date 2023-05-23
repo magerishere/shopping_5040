@@ -1,4 +1,9 @@
 <form action="{{$routeName}}" method="{{$formMethod === 'GET' ? 'GET' : 'POST'}}">
+    @session('session_message')
+    <div class="alert alert-{{session()->get('session_message_type')}}">
+        {{session()->get('session_message')}}
+    </div>
+    @endsession
     @csrf
     @if(in_array($formMethod,['PUT','PATCH','DELETE']))
         @method($formMethod)

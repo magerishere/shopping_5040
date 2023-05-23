@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Vite;
 use Illuminate\Support\ServiceProvider;
 
@@ -20,6 +22,19 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Vite::macro('image', fn (string $asset) => $this->asset("images/{$asset}",'back'));
+        $this->viteComposer();
+        $this->directiveComposer();
+    }
+
+    private function viteComposer()
+    {
+        Vite::macro('image', fn(string $asset) => $this->asset("images/{$asset}", 'back'));
+    }
+
+    private function directiveComposer()
+    {
+        Blade::if('session', function (string $sessionKey) {
+            return Session::has($sessionKey);
+        });
     }
 }
