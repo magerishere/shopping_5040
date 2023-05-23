@@ -15,5 +15,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [DashboardController::class, 'showDashboard']);
-Route::get('/login', [AuthController::class, 'showLoginForm']);
+Route::get('/', [DashboardController::class, 'showDashboard'])->name('dashboard.show');
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login.show');
+Route::post('/login', [AuthController::class, 'showLoginForm'])->name('login');
