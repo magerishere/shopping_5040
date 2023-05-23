@@ -10,7 +10,7 @@
                     <li>
                         <a href="#" class="nav-link text-white">
                             <i class="bi bi-house mx-auto mb-1"></i>
-                            خانه
+                            Home
                         </a>
                     </li>
                 </ul>
