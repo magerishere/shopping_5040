@@ -12,7 +12,7 @@ class Form extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct(public string $routeName, public string $formMethod = 'POST')
+    public function __construct(public string $routeName, public string $formMethod = 'POST', public bool $hasFile = false)
     {
         $this->formMethod = Str::upper($this->formMethod);
     }
