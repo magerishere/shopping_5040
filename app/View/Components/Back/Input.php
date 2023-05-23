@@ -6,12 +6,12 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class PasswordInput extends Component
+class Input extends Component
 {
     /**
      * Create a new component instance.
      */
-    public function __construct(public string $inputId, public string $inputName, public string $labelText, public int $size = 12, public int $sizeMd = 6, public int $sizeLg = 12)
+    public function __construct(public string $inputId, public string $inputName, public string $labelText, public $inputType = 'text', public int $size = 12, public int $sizeMd = 6, public int $sizeLg = 12)
     {
         //
     }
@@ -21,6 +21,6 @@ class PasswordInput extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.back.password-input');
+        return view('components.back.input');
     }
 }
