@@ -8,7 +8,9 @@
                     'is-invalid' => $errors->has($inputName),
                 ])
                id="{{$inputId}}"
-               name="{{$inputName}}">
+               name="{{$inputName}}"
+               value="{{$inputValue}}"
+        >
         @error($inputName)
         <div class="invalid-feedback">
             {{$message}}
