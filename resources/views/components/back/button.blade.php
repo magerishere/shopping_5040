@@ -1,1 +1,1 @@
-<button type="{{$buttonType}}" class="btn btn-{{$buttonColor}}">Login To Dashboard</button>
+<button type="{{$buttonType}}" class="btn btn-{{$buttonColor}}">{{$slot}}</button>
