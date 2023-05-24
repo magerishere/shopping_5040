@@ -38,8 +38,16 @@ return [
 
         'public' => [
             'driver' => 'local',
-            'root' => storage_path('app/public'),
-            'url' => env('APP_URL').'/storage',
+            'root' => public_path('uploads'),
+            'url' => env('APP_URL') . '/uploads',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
+
+        \App\Enums\DiskName::PRODUCTS => [
+            'driver' => 'local',
+            'root' => public_path('/uploads/products'),
+            'url' => env('APP_URL') . '/uploads/products',
             'visibility' => 'public',
             'throw' => false,
         ],

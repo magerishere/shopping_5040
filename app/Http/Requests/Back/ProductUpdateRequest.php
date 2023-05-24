@@ -4,7 +4,7 @@ namespace App\Http\Requests\Back;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ProductStoreRequest extends FormRequest
+class ProductUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +24,8 @@ class ProductStoreRequest extends FormRequest
         return [
             'title' => ['required', 'string', 'max:255'],
             'slug' => ['required', 'string', 'max:255'],
-            'image_desktop' => ['required', 'file', 'max:1024'],
-            'image_mobile' => ['required', 'file', 'max:1024'],
+            'image_desktop' => ['nullable', 'file', 'max:1024'],
+            'image_mobile' => ['nullable', 'file', 'max:1024'],
             'brief_content' => ['required', 'string'],
             'content' => ['required', 'string'],
         ];

@@ -42,8 +42,19 @@ class ProductService
         return $product;
     }
 
-    public function upload(Product $product, UploadedFile $file): Media
+    public function update(Product $product, array $data): Product
     {
-        return $product->addMedia($file)->toMediaCollection();
+        $product->update($data);
+
+        if ($data['slug'] !== $product->slugContent) {
+            $product->slug()->create([
+                'content' => $data['slug']
+            ]);
+        }
+
+        $product->refresh();
+
+        return $product;
     }
+
 }

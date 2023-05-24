@@ -4,7 +4,7 @@
 @section('content')
     <x-back.container>
         <x-back.card>
-            <x-back.form routeName="{{route('admin.products.update',$product->id)}}">
+            <x-back.form routeName="{{route('admin.products.update',$product->id)}}" formMethod="PATCH" hasFile>
                 <x-back.input
                     inputId="title"
                     inputName="title"
@@ -18,10 +18,18 @@
                     inputValue="{{$product->slugContent}}"
                 />
                 <x-back.input
-                    inputId="image"
-                    inputName="image"
-                    labelText="Image"
+                    inputId="image_desktop"
+                    inputName="image_desktop"
+                    labelText="Image Desktop (1 MB)"
                     inputType="file"
+                    inputValue="{{$product->getFirstMediaUrl(\App\Enums\ProductMediaCollection::DEFAULT)}}"
+                />
+                <x-back.input
+                    inputId="image_mobile"
+                    inputName="image_mobile"
+                    labelText="Image Mobile (1 MB)"
+                    inputType="file"
+                    inputValue="{{$product->getFirstMediaUrl(\App\Enums\ProductMediaCollection::MOBILE)}}"
                 />
                 <x-back.textarea
                     inputId="brief_content"

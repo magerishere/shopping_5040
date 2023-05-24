@@ -2,15 +2,19 @@
 
 namespace App\Http\Controllers\Back;
 
+use App\Enums\DiskName;
+use App\Enums\ProductMediaCollection;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Back\ProductStoreRequest;
+use App\Http\Requests\Back\ProductUpdateRequest;
 use App\Models\Product;
 use App\Services\ProductService;
+use App\Services\UploadService;
 use Illuminate\Http\Request;
 
 class ProductController extends BackController
 {
-    public function __construct(protected ProductService $productService)
+    public function __construct(protected ProductService $productService, protected UploadService $uploadService)
     {
 
     }
@@ -37,10 +41,24 @@ class ProductController extends BackController
      */
     public function store(ProductStoreRequest $request)
     {
-        $product = $this->productService->create($request->all());
-        $this->productService->upload($product, $request->file('image'));
-        $this->showSuccessAlert(" $product->title Successfully created");
-        return to_route('admin.products.edit', $product->id);
+        try {
+
+            $product = $this->productService->create($request->all());
+            if ($imageDesktop = $request->file('image_desktop')) {
+
+                $this->uploadService->uploadFile($product, $imageDesktop, ProductMediaCollection::DEFAULT, DiskName::PRODUCTS);
+            }
+            if ($imageMobile = $request->file('image_mobile')) {
+                $this->uploadService->uploadFile($product, $imageMobile, ProductMediaCollection::MOBILE, DiskName::PRODUCTS);
+            }
+            $this->showSuccessAlert(" $product->title Successfully created");
+            return to_route('admin.products.edit', $product->id);
+        } catch (\Exception $exception) {
+            report($exception);
+            $this->showErrorAlert($exception->getMessage());
+            return back();
+        }
+
     }
 
     /**
@@ -54,9 +72,24 @@ class ProductController extends BackController
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Product $product)
+    public function update(ProductUpdateRequest $request, Product $product)
     {
-        //
+        try {
+            $product = $this->productService->update($product, $request->all());
+            if ($imageDesktop = $request->file('image_desktop')) {
+                $this->uploadService->uploadFile($product, $imageDesktop, ProductMediaCollection::DEFAULT, DiskName::PRODUCTS);
+            }
+            if ($imageMobile = $request->file('image_mobile')) {
+                $this->uploadService->uploadFile($product, $imageMobile, ProductMediaCollection::MOBILE, DiskName::PRODUCTS);
+            }
+            $this->showSuccessAlert("$product->title Successfully Updated");
+            return back();
+        } catch (\Exception $exception) {
+            report($exception);
+            $this->showErrorAlert($exception->getMessage());
+            return back();
+        }
+
     }
 
     /**

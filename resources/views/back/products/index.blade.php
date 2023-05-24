@@ -12,6 +12,12 @@
                     </x-back.button>
                 </div>
             @else
+                <div class="mb-3">
+                    <x-back.button buttonLink="{{route('admin.products.create')}}">
+                        Create New <i class="bi bi-plus"></i>
+                    </x-back.button>
+                </div>
+
                 <table class="table table-hover">
                     <thead>
                     <tr>

@@ -16,9 +16,15 @@
                     labelText="Slug"
                 />
                 <x-back.input
-                    inputId="image"
-                    inputName="image"
-                    labelText="Image"
+                    inputId="image_desktop"
+                    inputName="image_desktop"
+                    labelText="Image Desktop (1 MB)"
+                    inputType="file"
+                />
+                <x-back.input
+                    inputId="image_mobile"
+                    inputName="image_mobile"
+                    labelText="Image Mobile (1 MB)"
                     inputType="file"
                 />
                 <x-back.textarea
