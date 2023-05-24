@@ -97,6 +97,15 @@ class ProductController extends BackController
      */
     public function destroy(Product $product)
     {
-        //
+        try {
+            $this->productService->destroy($product);
+            $this->showSuccessAlert("$product->title successfully Deleted");
+            return back();
+        } catch (\Exception $exception) {
+            report($exception);
+            $this->showErrorAlert($exception->getMessage());
+            return back();
+        }
+
     }
 }

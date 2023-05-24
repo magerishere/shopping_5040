@@ -57,4 +57,16 @@ class ProductService
         return $product;
     }
 
+    public function destroy(Product $product, bool $softDelete = true): Product
+    {
+        if ($softDelete) {
+            $product->delete();
+        } else {
+            $product->forceDelete();
+            $product->clearMediaCollection();
+        }
+
+        return $product;
+    }
+
 }
