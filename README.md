@@ -3,7 +3,7 @@
 Please follow the step for running project
 
 * pull from github
-* run: php artisan .env.example .env
+* run: cp .env.example .env
 * set database credentials
 * run migration with factories: php artisan migrate --seed
 * run your machine localhost and go to address of your project: php artisan serve
