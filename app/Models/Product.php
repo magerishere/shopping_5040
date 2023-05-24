@@ -30,4 +30,9 @@ class Product extends Model implements HasMedia
             get: fn() => $this->getFirstMedia('default'), // if you want to change default product image to mobile, set collection name to mobile!
         );
     }
+
+    public function variation()
+    {
+        return $this->hasOne(Variation::class);
+    }
 }

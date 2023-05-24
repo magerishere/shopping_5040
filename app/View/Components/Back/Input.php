@@ -11,7 +11,7 @@ class Input extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct(public string $inputId, public string $inputName, public string $labelText, public string $inputType = 'text', public string $inputValue = '', public int $size = 12, public int $sizeMd = 6, public int $sizeLg = 12)
+    public function __construct(public string $inputId, public string $inputName, public string $labelText, public string $inputType = 'text', public string $inputValue = '', public int $size = 12, public int $sizeMd = 6, public int $sizeLg = 4)
     {
         //
     }

@@ -21,6 +21,30 @@
                     data-slugger-url="{{route('admin.slugs.products.make_content',$product->id)}}"
                 />
                 <x-back.input
+                    inputId="sku"
+                    inputName="sku"
+                    labelText="Sku"
+                    inputValue="{{$product->variation?->sku}}"
+                />
+                <x-back.input
+                    inputId="price"
+                    inputName="price"
+                    labelText="Price"
+                    inputValue="{{$product->variation?->price}}"
+                />
+                <x-back.input
+                    inputId="stock"
+                    inputName="stock"
+                    labelText="Stock"
+                    inputValue="{{$product->variation?->stock}}"
+                />
+                <x-back.input
+                    inputId="max_order"
+                    inputName="max_order"
+                    labelText="Max Order"
+                    inputValue="{{$product->variation?->max_order}}"
+                />
+                <x-back.input
                     inputId="image_desktop"
                     inputName="image_desktop"
                     labelText="Image Desktop (1 MB)"

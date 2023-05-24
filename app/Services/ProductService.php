@@ -16,7 +16,7 @@ class ProductService
      *
      * @return void
      */
-    public function __construct(protected SlugService $slugService)
+    public function __construct(protected SlugService $slugService, protected VariationService $variationService)
     {
         //
     }
@@ -37,6 +37,8 @@ class ProductService
 
         $this->slugService->useModel($product)->create($data['slug']);
 
+        $this->variationService->updateOrCreate($product, $data);
+
         return $product;
     }
 
@@ -47,6 +49,9 @@ class ProductService
         if ($data['slug'] !== $product->slugContent) {
             $this->slugService->useModel($product)->update($data['slug']);
         }
+
+        $this->variationService->updateOrCreate($product, $data);
+
 
         $product->refresh();
 

@@ -23,9 +23,13 @@ class ProductStoreRequest extends FormRequest
     {
         return [
             'title' => ['required', 'string', 'max:255'],
+            'sku' => ['required', 'string', 'max:255'],
+            'stock' => ['nullable', 'integer'],
+            'max_order' => ['nullable', 'integer'],
+            'price' => ['required', 'numeric'],
             'slug' => ['required', 'string', 'max:255'],
-            'image_desktop' => ['required', 'file', 'max:1024'],
-            'image_mobile' => ['required', 'file', 'max:1024'],
+            'image_desktop' => ['nullable', 'file', 'max:1024'],
+            'image_mobile' => ['nullable', 'file', 'max:1024'],
             'brief_content' => ['required', 'string'],
             'content' => ['required', 'string'],
         ];

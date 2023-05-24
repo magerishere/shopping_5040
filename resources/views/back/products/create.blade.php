@@ -19,16 +19,39 @@
                     data-slugger-url="{{route('admin.slugs.products.make_content')}}"
                 />
                 <x-back.input
+                    inputId="sku"
+                    inputName="sku"
+                    labelText="Sku"
+                />
+                <x-back.input
+                    inputId="price"
+                    inputName="price"
+                    labelText="Price"
+                />
+                <x-back.input
+                    inputId="stock"
+                    inputName="stock"
+                    labelText="Stock"
+                />
+                <x-back.input
+                    inputId="max_order"
+                    inputName="max_order"
+                    labelText="Max Order"
+                />
+                <x-back.input
                     inputId="image_desktop"
                     inputName="image_desktop"
                     labelText="Image Desktop (1 MB)"
                     inputType="file"
+                    sizeLg="12"
                 />
                 <x-back.input
                     inputId="image_mobile"
                     inputName="image_mobile"
                     labelText="Image Mobile (1 MB)"
                     inputType="file"
+                    sizeLg="12"
+
                 />
                 <x-back.textarea
                     inputId="brief_content"
