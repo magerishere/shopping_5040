@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Front\ProductController;
+use App\Http\Controllers\Front\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +15,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('back.layouts.master');
-});
+Route::get('/', [HomeController::class, 'showHome'])->name('home');
+Route::resource('products', ProductController::class)->only(['index']);
+
