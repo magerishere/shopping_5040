@@ -11,6 +11,10 @@ class Slug extends Model
     use HasFactory;
     use SoftDeletes;
 
+    protected $fillable = [
+        'content'
+    ];
+
     public function sluggable()
     {
         return $this->morphTo();
