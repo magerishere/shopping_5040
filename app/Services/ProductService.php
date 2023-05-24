@@ -16,7 +16,7 @@ class ProductService
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(protected SlugService $slugService)
     {
         //
     }
@@ -35,9 +35,7 @@ class ProductService
     {
         $product = $this->getQuery()->create($data);
 
-        $product->slug()->create([
-            'content' => $data['slug'],
-        ]);
+        $this->slugService->useModel($product)->create($data['slug']);
 
         return $product;
     }
@@ -47,9 +45,7 @@ class ProductService
         $product->update($data);
 
         if ($data['slug'] !== $product->slugContent) {
-            $product->slug()->create([
-                'content' => $data['slug']
-            ]);
+            $this->slugService->useModel($product)->update($data['slug']);
         }
 
         $product->refresh();

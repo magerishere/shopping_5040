@@ -30,6 +30,14 @@ window.axios = axios;
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
+import Handler from './handlers/Handler';
+
+window.Handler = Handler();
+
+import Helper from './helpers/Helper';
+
+Helper();
+
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting

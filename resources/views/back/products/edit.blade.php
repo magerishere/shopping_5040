@@ -16,6 +16,9 @@
                     inputName="slug"
                     labelText="Slug"
                     inputValue="{{$product->slugContent}}"
+                    inputType="slug"
+                    data-slugger-selector="#title"
+                    data-slugger-url="{{route('admin.slugs.products.make_content',$product->id)}}"
                 />
                 <x-back.input
                     inputId="image_desktop"

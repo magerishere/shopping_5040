@@ -25,6 +25,21 @@
                        name="{{$inputName}}"
                 >
                 @break
+            @case('slug')
+                <label for="{{$inputId}}" class="form-label">{{$labelText}}</label>
+                <input type="text"
+                       @class([
+                            "form-control",
+                            'is-valid' => $errors->any() && !$errors->has($inputName),
+                            'is-invalid' => $errors->has($inputName),
+                        ])
+                       id="{{$inputId}}"
+                       name="{{$inputName}}"
+                       value="{{$inputValue}}"
+                    {{$attributes}}
+                >
+                @break
+
             @default
                 <label for="{{$inputId}}" class="form-label">{{$labelText}}</label>
                 <input type="{{$inputType}}"

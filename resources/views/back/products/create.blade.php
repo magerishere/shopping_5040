@@ -14,6 +14,9 @@
                     inputId="slug"
                     inputName="slug"
                     labelText="Slug"
+                    inputType="slug"
+                    data-slugger-selector="#title"
+                    data-slugger-url="{{route('admin.slugs.products.make_content')}}"
                 />
                 <x-back.input
                     inputId="image_desktop"
@@ -47,3 +50,6 @@
         </x-back.card>
     </x-back.container>
 @endsection
+
+
+

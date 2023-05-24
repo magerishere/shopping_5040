@@ -3,6 +3,7 @@
 use App\Http\Controllers\Back\AuthController;
 use App\Http\Controllers\Back\DashboardController;
 use App\Http\Controllers\Back\ProductController;
+use App\Http\Controllers\Back\SlugController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,5 +24,7 @@ Route::middleware('guest')->group(function () {
 
 Route::get('/', [DashboardController::class, 'showDashboard'])->name('dashboard.show')->middleware('auth');
 Route::resource('products', ProductController::class);
+
+Route::post('slugs/products/{product?}', [SlugController::class, 'makeContentForProduct'])->name('slugs.products.make_content');
 
 
