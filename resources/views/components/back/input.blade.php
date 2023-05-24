@@ -4,7 +4,13 @@
             @case ('file')
                 @if($inputValue)
                     <div class="mb-3">
-                        <img src="{{$inputValue}}" alt="Image" width="100" height="100">
+                        <x-back.image
+                            imageSrc="{{$inputValue}}"
+                            imageAlt="Image"
+                            imageWidth="100"
+                            imageHeight="100"
+                            imageMode="normal"
+                        />
                     </div>
 
                 @endif
