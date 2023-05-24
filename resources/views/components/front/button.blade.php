@@ -1,5 +1,5 @@
 @if($buttonLink)
-    <a href="{{$buttonLink}}" class="btn btn-{{$buttonColor}}">{{$slot}}</a>
+    <a href="{{$buttonLink}}" class="btn btn-{{$buttonColor}}" {{$attributes}}>{{$slot}}</a>
 @else
-    <button type="{{$buttonType}}" class="btn btn-{{$buttonColor}}">{{$slot}}</button>
+    <button type="{{$buttonType}}" class="btn btn-{{$buttonColor}}" {{$attributes}}>{{$slot}}</button>
 @endif

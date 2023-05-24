@@ -35,4 +35,9 @@ class Product extends Model implements HasMedia
     {
         return $this->hasOne(Variation::class);
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

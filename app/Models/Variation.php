@@ -19,4 +19,9 @@ class Variation extends Model
         'max_order'
     ];
 
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
+
 }

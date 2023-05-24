@@ -24,9 +24,9 @@ class ProductUpdateRequest extends FormRequest
         return [
             'title' => ['required', 'string', 'max:255'],
             'sku' => ['required', 'string', 'max:255'],
-            'stock' => ['nullable', 'integer'],
-            'max_order' => ['nullable', 'integer'],
-            'price' => ['required', 'numeric'],
+            'stock' => ['nullable', 'integer', 'min:0'],
+            'max_order' => ['nullable', 'integer', 'min:1'],
+            'price' => ['required', 'numeric', 'min:1'],
             'slug' => ['required', 'string', 'max:255'],
             'image_desktop' => ['nullable', 'file', 'max:1024'],
             'image_mobile' => ['nullable', 'file', 'max:1024'],

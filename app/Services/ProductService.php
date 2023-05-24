@@ -3,11 +3,10 @@
 namespace App\Services;
 
 
+use App\Jobs\ProductCreated;
+use App\Jobs\ProductUpdated;
 use App\Models\Product;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Support\Facades\File;
-use Spatie\MediaLibrary\MediaCollections\Models\Media;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class ProductService
 {
@@ -33,17 +32,23 @@ class ProductService
 
     public function create(array $data): Product
     {
+        $data['user_id'] = \Auth::id();
+
         $product = $this->getQuery()->create($data);
 
         $this->slugService->useModel($product)->create($data['slug']);
 
         $this->variationService->updateOrCreate($product, $data);
 
+        ProductCreated::dispatch($product);
+
         return $product;
     }
 
     public function update(Product $product, array $data): Product
     {
+        $data['user_id'] = \Auth::id();
+
         $product->update($data);
 
         if ($data['slug'] !== $product->slugContent) {
@@ -55,6 +60,7 @@ class ProductService
 
         $product->refresh();
 
+        ProductUpdated::dispatch($product);
         return $product;
     }
 

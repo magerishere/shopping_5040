@@ -1,6 +1,4 @@
 const Slug = () => {
-    let sluggers = [];
-
     const getSluggables = () => {
         return $("[data-slugger-selector]");
     }

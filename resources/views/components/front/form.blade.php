@@ -8,7 +8,7 @@
     @if(in_array($formMethod,['PUT','PATCH','DELETE']))
         @method($formMethod)
     @endif
-    <div class="row">
+    <div class="row gy-3">
         {{$slot}}
     </div>
 

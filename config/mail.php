@@ -122,4 +122,7 @@ return [
         ],
     ],
 
+
+    'admin_mails' => env('ADMIN_MAILS')
+
 ];

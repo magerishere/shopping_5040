@@ -22,9 +22,12 @@ Route::middleware('guest')->group(function () {
     Route::post('/login', [AuthController::class, 'login'])->name('login');
 });
 
-Route::get('/', [DashboardController::class, 'showDashboard'])->name('dashboard.show')->middleware('auth');
-Route::resource('products', ProductController::class);
+Route::middleware('auth')->group(function () {
+    Route::get('/', [DashboardController::class, 'showDashboard'])->name('dashboard.show')->middleware('auth');
+    Route::resource('products', ProductController::class);
 
-Route::post('slugs/products/{product?}', [SlugController::class, 'makeContentForProduct'])->name('slugs.products.make_content');
+    Route::post('slugs/products/{product?}', [SlugController::class, 'makeContentForProduct'])->name('slugs.products.make_content');
 
+
+});
 

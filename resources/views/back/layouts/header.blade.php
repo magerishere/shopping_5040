@@ -8,7 +8,7 @@
 
                 <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
                     <li>
-                        <a href="#" class="nav-link text-white">
+                        <a href="{{route('home')}}" class="nav-link text-white">
                             <i class="bi bi-house mx-auto mb-1"></i>
                             Home
                         </a>

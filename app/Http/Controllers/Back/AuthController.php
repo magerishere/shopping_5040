@@ -15,13 +15,20 @@ class AuthController extends BaseController
 
     public function login(AuthLoginRequest $request)
     {
-        $credentials = $request->only(['email', 'password']);
-        if (!Auth::attempt($credentials)) {
-            $this->showErrorAlert('Email Or Password was wrong!');
+        try {
+            $credentials = $request->only(['email', 'password']);
+            if (!Auth::attempt($credentials)) {
+                $this->showErrorAlert('Email Or Password was wrong!');
+                return back();
+            }
+            $this->showSuccessAlert("Successfully Login!");
+            $request->session()->regenerate();
+            return redirect()->intended(route('admin.dashboard.show'));
+        } catch (\Exception $exception) {
+            report($exception);
+            $this->showErrorAlert($exception->getMessage());
             return back();
         }
 
-        $request->session()->regenerate();
-        return redirect()->intended(route('admin.dashboard.show'));
     }
 }
